@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
+import CodeIcon from "../../res/icons/code.svg";
+import LoopIcon from "../../res/icons/loop.svg";
+import ChartIcon from "../../res/icons/chart.svg";
+import GearIcon from "../../res/icons/gear.svg";
 
 const Container = styled.div.attrs({ className: "skills-slide" })`
     width: 100%;
@@ -28,6 +32,10 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
             align-items: center;
             gap: 1rem;
             margin-top: 2rem;
+
+            img {
+                height: 4rem;
+            }
 
             h5 {
                 text-align: center;
@@ -59,22 +67,16 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
         grid-template-rows: 1fr 1fr;
 
         .skillblock {
-            padding-bottom: 2rem;
+            padding-bottom: 3rem;
         }
     }
 
     @media screen and (max-width: 550px) {
-        height: auto;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-
-        .skillblock {
-            padding-bottom: 2rem;
-        }
     }
 `
 
-// props = 
 export default function SkillsSlide({ children }) {
     return (
         <Slide color="var(--white)" freeHeightBreakpoint="980px">
@@ -84,6 +86,8 @@ export default function SkillsSlide({ children }) {
                 <section className='skillblock'>
 
                     <div className='skillblock-content'>
+
+                        <img src={LoopIcon} />
 
                         <h5> AUTOMATION & SCRIPTING </h5>
 
@@ -110,6 +114,8 @@ export default function SkillsSlide({ children }) {
 
                     <div className='skillblock-content'>
 
+                        <img src={CodeIcon} />
+
                         <h5> DEVELOPMENT </h5>
 
                         <AccentLine width="75px" />
@@ -135,6 +141,8 @@ export default function SkillsSlide({ children }) {
 
                     <div className='skillblock-content'>
 
+                        <img src={ChartIcon} />
+
                         <h5> MONITORING & LOGGING </h5>
 
                         <AccentLine width="75px" />
@@ -159,6 +167,8 @@ export default function SkillsSlide({ children }) {
                 <section className='skillblock'>
 
                     <div className='skillblock-content'>
+
+                        <img src={GearIcon} />
 
                         <h5> OTHER </h5>
 

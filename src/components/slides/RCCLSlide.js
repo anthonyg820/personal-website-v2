@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
 import RCCLLogo from "../../res/images/RCCL.svg";
+import Texture from "../../res/images/cube-texture.png";
 
 const Container = styled.div.attrs({ className: "rccl-slide" })`
     width: 100%;
@@ -21,7 +22,8 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         justify-content: space-between;
         border-bottom: 1px solid var(--rccl-navy);
         flex-shrink: 0;
-        // background: yellow;
+        background: var(--rccl-navy);
+        color: var(--white);
 
         .header-half {
             display: flex;
@@ -40,6 +42,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         height: 100%;
         display: flex;
         align-items: center;
+        background: url('${Texture}');
     }
 
     section {
@@ -47,21 +50,29 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         height: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 1rem;
 
         .slide-half-content {
             width: 80%;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 2rem;
             // background: red;
+            box-sizing: border-box;
+            padding: 2rem;
         }
     }
 
     #left-of-content {
         border-right: 1px solid var(--rccl-navy);
+
+        .slide-half-content {
+            background: var(--rccl-navy);
+            border-radius: 2rem;
+            color: var(--white);
+        }
 
         img {
             width: 400px;
@@ -96,15 +107,18 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
     }
 
     #right-of-content {
+
+        .slide-half-content {
+            border: 1px solid var(--rccl-navy);
+            background:var(--rccl-blue);
+        }
         
         ul {
             list-style: none;
-            max-height: 50%;
+            max-height: 350px;
             overflow-y: auto;
             box-sizing: border-box;
             padding: 0 1rem;
-            border: 1px solid var(--rccl-navy);
-            // background: var(--rccl-navy);
         }
 
         li {
@@ -126,7 +140,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
             }
     
             h4 {
-                font-size: 3rem;
+                font-size: 2.6rem;
             }
 
             p {
@@ -161,7 +175,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         section {
             width: 100%;
             height: auto;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
         .slide-half-content {
@@ -171,6 +185,12 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         #left-of-content {
             border-right: 0;
             border-bottom: 1px solid var(--rccl-navy);
+        }
+
+        #right-of-content {
+            ul {
+                max-height: none;
+            }
         }
     }
 `
@@ -186,14 +206,12 @@ export default function RCCLSlide({ children }) {
                     <div className='header-half' id='left-of-header'>
 
                         <h5> JAN. 2019 - SEP. 2021 </h5>
-                        {/* <AccentLine width='75px' color='var(--ukg-teal)' /> */}
 
                     </div>
 
                     <div className='header-half' id='right-of-header'>
 
                         <h5> SITE RELIABILITY ENGINEER </h5>
-                        {/* <AccentLine width='75px' color='var(--ukg-teal)' /> */}
 
                     </div>
 

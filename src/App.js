@@ -18,10 +18,10 @@ import { Link, animateScroll as scroll } from "react-scroll";
 
 const Container = styled.div.attrs({ className: "app" })`
   width: 100%;
-  height: 100vh;
   display: flex;
   overflow: hidden;
   background: var(--black);
+  box-sizing: border-box;
 
   .menu-button {
     position: fixed;
@@ -44,7 +44,7 @@ const Container = styled.div.attrs({ className: "app" })`
     position: relative;
     width: 70%;
     height: 0.25rem;
-    background: var(--black);
+    background: ${({ menuIsVisible }) => menuIsVisible ? "var(--red)" : "var(--black)"};
     flex-shrink: 0;
     transition: 0.3s;
   }
@@ -64,16 +64,18 @@ const Container = styled.div.attrs({ className: "app" })`
   }
 
   nav {
-    position: relative;
+    position: fixed;
     width: ${({ menuIsVisible }) => menuIsVisible ? "7rem" : "0"};
+    height: 100dvh;
     top: 0;
-    height: 100%;
+    left: 0;
     background: var(--white);
     flex-shrink: 0;
     transition: 0.3s;
     overflow: hidden;
     box-sizing: border-box;
     border-right: 1px solid var(--black);
+    z-index: 5;
 
     #nav-content {
       width: 7rem;
@@ -125,13 +127,15 @@ const Container = styled.div.attrs({ className: "app" })`
   }
 
   #app-content {
-    position: relative;
+    position: absolute;
     top: 0;
+    left: ${({ menuIsVisible }) => menuIsVisible ? "7rem" : "0"};
     width: 100%;
-    height: 100%;
-    overflow-y: auto;
+    height: 100dvh;
     flex-shrink: 0;
     transition: 0.3s;
+    box-sizing: border-box;
+    overflow-y: auto;
   }
 `
 
@@ -162,14 +166,14 @@ function App() {
         <div id='nav-content'>
 
           <Link
-            containerId='app-content'
             activeClass='active'
+            containerId='app-content'
             spy={true}
             smooth={true}
-            duration={500}
+            duration={1000}
             className='nav-item'
             onClick={() => {
-              scroll.scrollTo(0, {containerId: 'app-content', duration: 500, delay: 300}); setVisible(false)}
+              scroll.scrollTo(0, {containerId: 'app-content', duration: 1000, delay: 300}); setVisible(false)}
               }>
 
             <img src={HomeIcon} />
@@ -178,12 +182,12 @@ function App() {
           </Link>
 
           <Link
-            containerId='app-content'
             activeClass='active'
+            containerId='app-content'
             to='section-header1'
             spy={true}
             smooth={true}
-            duration={500}
+            duration={1000}
             delay={300}
             className='nav-item'
             onClick={() => setVisible(false)}>
@@ -194,12 +198,12 @@ function App() {
           </Link>
 
           <Link
-            containerId='app-content'
             activeClass='active'
+            containerId='app-content'
             to='section-header2'
             spy={true}
             smooth={true}
-            duration={500}
+            duration={1000}
             delay={300}
             className='nav-item'
             onClick={() => setVisible(false)}>
@@ -209,13 +213,29 @@ function App() {
 
           </Link>
 
-          <Link
-            containerId='app-content'
+          {/* <Link
             activeClass='active'
+            containerId='app-content'
+            to='section-header2'
+            spy={true}
+            smooth={true}
+            duration={1000}
+            delay={300}
+            className='nav-item'
+            onClick={() => setVisible(false)}>
+
+            <img src={EducationIcon} />
+            <h6> Projects </h6>
+
+          </Link> */}
+
+          <Link
+            activeClass='active'
+            containerId='app-content'
             to='section-header3'
             spy={true}
             smooth={true}
-            duration={500}
+            duration={1000}
             delay={300}
             className='nav-item'
             onClick={() => setVisible(false)}>

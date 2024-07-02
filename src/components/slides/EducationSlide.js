@@ -3,10 +3,10 @@ import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
 import TerraformIcon from '../../res/icons/terraform.svg';
 import AppdynamicsIcon from '../../res/icons/appdynamics.svg';
-import DockerIcon from '../../res/icons/docker.svg';
+import DockerIcon from '../../res/icons/docker-filled.svg';
 import GCPIcon from '../../res/icons/gcp.svg';
-import ComptiaIcon from '../../res/icons/comptia.svg';
-import UniversityIcon from '../../res/icons/education-black.svg';
+import GlobalIcon from '../../res/icons/global.svg';
+import UniversityIcon from '../../res/icons/education-black-filled.svg';
 
 const Container = styled.div.attrs({ className: "education-slide" })`
     width: 100%;
@@ -51,7 +51,7 @@ const Container = styled.div.attrs({ className: "education-slide" })`
             grid-template-rows: 1fr 1fr 1fr;
 
             li {
-                padding: 2rem 1rem;
+                padding: 3rem 1rem;
             }
         }
     }
@@ -62,10 +62,6 @@ const Container = styled.div.attrs({ className: "education-slide" })`
         #education-list {
             grid-template-columns: 1fr;
             grid-template-rows: auto;
-
-            li {
-                padding: 2rem 1rem;
-            }
         }
     }
 `
@@ -106,7 +102,7 @@ export default function EducationSlide({ children }) {
                     </li>
 
                     <li>
-                        <img src={ComptiaIcon} />
+                        <img src={GlobalIcon} />
                         <h6> Aug. 2021 </h6>
                         <AccentLine width='75px' />
                         <h4> CompTIA Network+ </h4>

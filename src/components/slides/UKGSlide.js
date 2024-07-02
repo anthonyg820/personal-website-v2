@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
-import UKGLogo from "../../res/images/UKG.svg";
+import UKGLogo from "../../res/images/UKG2.svg";
+import Texture from "../../res/images/cube-texture.png";
 
 const Container = styled.div.attrs({ className: "skills-slide" })`
     width: 100%;
@@ -21,7 +22,8 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
         justify-content: space-between;
         border-bottom: 1px solid var(--ukg-teal);
         flex-shrink: 0;
-        // background: yellow;
+        background: var(--ukg-teal);
+        color: var(--ukg-green);
 
         .header-half {
             display: flex;
@@ -40,6 +42,7 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
         height: 100%;
         display: flex;
         align-items: center;
+        background: url('${Texture}');
     }
 
     section {
@@ -47,28 +50,36 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
         height: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 1rem;
 
         .slide-half-content {
             width: 80%;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 2rem;
             // background: red;
+            box-sizing: border-box;
+            padding: 2rem;
         }
     }
 
     #left-of-content {
         border-right: 1px solid var(--ukg-teal);
 
+        .slide-half-content {
+            background: var(--ukg-teal);
+            border-radius: 2rem;
+            color: var(--ukg-green);
+        }
+
         img {
             width: 200px;
         }
 
         h4 {
-            font-size: 5rem;
+            font-size: 2.6rem;
             font-weight: normal;
         }
 
@@ -96,14 +107,18 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
     }
 
     #right-of-content {
+
+        .slide-half-content {
+            border: 1px solid var(--ukg-teal);
+            background:var(--ukg-green);
+        }
         
         ul {
             list-style: none;
-            max-height: 50%;
+            max-height: 350px;
             overflow-y: auto;
             box-sizing: border-box;
             padding: 0 1rem;
-            border: 1px solid var(--ukg-teal);
             // background: var(--ukg-teal);
         }
 
@@ -162,7 +177,7 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
         section {
             width: 100%;
             height: auto;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
         .slide-half-content {
@@ -172,6 +187,12 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
         #left-of-content {
             border-right: 0;
             border-bottom: 1px solid var(--ukg-teal);
+        }
+
+        #right-of-content {
+            ul {
+                max-height: none;
+            }
         }
     }
 `
@@ -205,7 +226,7 @@ export default function UKGSlide({ children }) {
                         <div className='slide-half-content'>
 
                             <img src={UKGLogo} />
-                            <h4> Our purpose is people </h4>
+                            <i> <h4> "Our purpose is people" </h4> </i>
                             <p> UKG (Ultimate Kronos Group) is a SaaS company offering HR, payroll, and workforce management solutions. </p>
                             <a target="_blank" rel="noreferrer" href='https://www.ukg.com'> Learn more </a>
 

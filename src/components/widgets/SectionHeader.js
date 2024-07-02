@@ -8,7 +8,8 @@ const Container = styled.div.attrs({ className: "section-header"})`
     align-items: center;
     border-top: 2px solid var(--black);
     border-bottom: 2px solid var(--black);
-    background: var(--white);
+    background: var(--black);
+    color: var(--white);
 `
 
 export default function SectionHeader({title, id}) {
