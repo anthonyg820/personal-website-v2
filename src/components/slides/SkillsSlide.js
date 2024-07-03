@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
-import CodeIcon from "../../res/icons/code.svg";
-import LoopIcon from "../../res/icons/loop.svg";
-import ChartIcon from "../../res/icons/chart.svg";
-import GearIcon from "../../res/icons/gear.svg";
+import GetSkillsList from '../../data/skills-list';
 
 const Container = styled.div.attrs({ className: "skills-slide" })`
     width: 100%;
@@ -83,113 +80,24 @@ export default function SkillsSlide({ children }) {
 
             <Container>
 
-                <section className='skillblock'>
+                {
+                    GetSkillsList().map((item) =>
+                        <section className='skillblock'>
 
-                    <div className='skillblock-content'>
+                            <div className='skillblock-content'>
 
-                        <img src={LoopIcon} />
+                                <img src={item.icon} />
+                                <h5> {item.pillar} </h5>
+                                <AccentLine width="75px" />
+                                <ul> 
+                                    { item.skills.map((skill) =><li> {skill} </li>) } 
+                                </ul>
 
-                        <h5> AUTOMATION & SCRIPTING </h5>
+                            </div>
 
-                        <AccentLine width="75px" />
-
-                        <ul>
-
-                            <li> Ansible </li>
-                            <li> Terraform </li>
-                            <li> Terragrunt </li>
-                            <li> Terratest </li>
-                            <li> Packer </li>
-                            <li> GitHub Actions </li>
-                            <li> Bash </li>
-                            <li> Powershell </li>
-
-                        </ul>
-
-                    </div>
-
-                </section>
-
-                <section className='skillblock'>
-
-                    <div className='skillblock-content'>
-
-                        <img src={CodeIcon} />
-
-                        <h5> DEVELOPMENT </h5>
-
-                        <AccentLine width="75px" />
-
-                        <ul>
-
-                            <li> JavaScript </li>
-                            <li> NodeJS </li>
-                            <li> ReactJS </li>
-                            <li> HTML </li>
-                            <li> CSS </li>
-                            <li> Java </li>
-                            <li> SQL </li>
-                            <li> Python </li>
-
-                        </ul>
-
-                    </div>
-
-                </section>
-
-                <section className='skillblock'>
-
-                    <div className='skillblock-content'>
-
-                        <img src={ChartIcon} />
-
-                        <h5> MONITORING & LOGGING </h5>
-
-                        <AccentLine width="75px" />
-
-                        <ul>
-
-                            <li> Grafana </li>
-                            <li> DataDog </li>
-                            <li> AppDynamics </li>
-                            <li> Dynatrace </li>
-                            <li> Open Telemetry </li>
-                            <li> Splunk </li>
-                            <li> Kibana </li>
-                            <li> NXLog </li>
-
-                        </ul>
-
-                    </div>
-
-                </section>
-
-                <section className='skillblock'>
-
-                    <div className='skillblock-content'>
-
-                        <img src={GearIcon} />
-
-                        <h5> OTHER </h5>
-
-                        <AccentLine width="75px" />
-
-                        <ul>
-
-                            <li> Google Cloud Platform (GCP) </li>
-                            <li> Docker </li>
-                            <li> Kubernetes </li>
-                            <li> Linux </li>
-                            <li> Windows </li>
-                            <li> PagerDuty </li>
-                            <li> Git </li>
-                            <li> Jira </li>
-
-                        </ul>
-
-                    </div>
-
-                </section>
+                        </section>
+                    )
+                }
 
             </Container>
 

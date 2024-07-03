@@ -11,10 +11,15 @@ import EducationSlide from './components/slides/EducationSlide';
 import HomeIcon from "./res/icons/home-black.svg"
 import SkillsIcon from "./res/icons/skills-black.svg"
 import EducationIcon from "./res/icons/education-black.svg"
+import ProjectsIcon from "./res/icons/projects-black.svg"
 import ExperienceIcon from "./res/icons/experience-black.svg"
+import ContactIcon from "./res/icons/email2.svg"
 import { globalStore } from './AppManager';
 import { useEffect } from 'react';
 import { Link, animateScroll as scroll } from "react-scroll";
+import ContactSlide from './components/slides/ContactSlide';
+import ProjectsSlide from './components/slides/ProjectsSlide';
+import ProjectsSlideTwo from './components/slides/ProjectsSlideTwo';
 
 const Container = styled.div.attrs({ className: "app" })`
   width: 100%;
@@ -173,8 +178,9 @@ function App() {
             duration={1000}
             className='nav-item'
             onClick={() => {
-              scroll.scrollTo(0, {containerId: 'app-content', duration: 1000, delay: 300}); setVisible(false)}
-              }>
+              scroll.scrollTo(0, { containerId: 'app-content', duration: 1000, delay: 300 }); setVisible(false)
+            }
+            }>
 
             <img src={HomeIcon} />
             <h6> Home </h6>
@@ -213,22 +219,6 @@ function App() {
 
           </Link>
 
-          {/* <Link
-            activeClass='active'
-            containerId='app-content'
-            to='section-header2'
-            spy={true}
-            smooth={true}
-            duration={1000}
-            delay={300}
-            className='nav-item'
-            onClick={() => setVisible(false)}>
-
-            <img src={EducationIcon} />
-            <h6> Projects </h6>
-
-          </Link> */}
-
           <Link
             activeClass='active'
             containerId='app-content'
@@ -240,8 +230,40 @@ function App() {
             className='nav-item'
             onClick={() => setVisible(false)}>
 
+            <img src={ProjectsIcon} />
+            <h6> Projects </h6>
+
+          </Link>
+
+          <Link
+            activeClass='active'
+            containerId='app-content'
+            to='section-header4'
+            spy={true}
+            smooth={true}
+            duration={1000}
+            delay={300}
+            className='nav-item'
+            onClick={() => setVisible(false)}>
+
             <img src={ExperienceIcon} />
             <h6> Experience </h6>
+
+          </Link>
+
+          <Link
+            activeClass='active'
+            containerId='app-content'
+            to='section-header5'
+            spy={true}
+            smooth={true}
+            duration={1000}
+            delay={300}
+            className='nav-item'
+            onClick={() => setVisible(false)}>
+
+            <img src={ContactIcon} />
+            <h6> Contact </h6>
 
           </Link>
 
@@ -256,9 +278,13 @@ function App() {
         <SkillsSlide />
         <SectionHeader title="EDUCATION" />
         <EducationSlide />
+        <SectionHeader title="PROJECTS" />
+        <ProjectsSlideTwo />
         <SectionHeader title="EXPERIENCE" />
         <UKGSlide />
         <RCCLSlide />
+        <SectionHeader title="CONTACT" />
+        <ContactSlide />
 
       </div>
 

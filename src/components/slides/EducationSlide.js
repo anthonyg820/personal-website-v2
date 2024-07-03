@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
-import TerraformIcon from '../../res/icons/terraform.svg';
-import AppdynamicsIcon from '../../res/icons/appdynamics.svg';
-import DockerIcon from '../../res/icons/docker-filled.svg';
-import GCPIcon from '../../res/icons/gcp.svg';
-import GlobalIcon from '../../res/icons/global.svg';
-import UniversityIcon from '../../res/icons/education-black-filled.svg';
+import GetEducationList from '../../data/education-list';
 
 const Container = styled.div.attrs({ className: "education-slide" })`
     width: 100%;
@@ -35,6 +30,10 @@ const Container = styled.div.attrs({ className: "education-slide" })`
 
             img {
                 height: 6rem;
+                box-sizing: border-box;
+                border: 1px solid var(--black);
+                padding: 1rem;
+                border-radius: 1rem 0 1rem 0;
             }
         }
 
@@ -66,7 +65,7 @@ const Container = styled.div.attrs({ className: "education-slide" })`
     }
 `
 
-export default function EducationSlide({ children }) {
+export default function EducationSlide() {
     return (
         <Slide color="var(--white)" freeHeightBreakpoint="980px">
 
@@ -74,59 +73,18 @@ export default function EducationSlide({ children }) {
 
                 <ul id='education-list'>
 
-                    <li>
-                        <img src={DockerIcon} />
-                        <h6> In Progress </h6>
-                        <AccentLine width='75px' />
-                        <h4> Docker Certified Associate (DCA) </h4>
-                        <AccentLine width='75px' />
-                        <p> CERTIFICATE </p>
-                    </li>
-
-                    <li>
-                        <img src={TerraformIcon} />
-                        <h6> In Progress </h6>
-                        <AccentLine width='75px' />
-                        <h4> Hashicorp Certified Terraform Associate (003) </h4>
-                        <AccentLine width='75px' />
-                        <p> CERTIFICATE </p>
-                    </li>
-
-                    <li>
-                        <img src={GCPIcon} />
-                        <h6> Dec. 2023 </h6>
-                        <AccentLine width='75px' />
-                        <h4> Google Cloud Certified Associate Cloud Engineer </h4>
-                        <AccentLine width='75px' />
-                        <p> CERTIFICATE </p>
-                    </li>
-
-                    <li>
-                        <img src={GlobalIcon} />
-                        <h6> Aug. 2021 </h6>
-                        <AccentLine width='75px' />
-                        <h4> CompTIA Network+ </h4>
-                        <AccentLine width='75px' />
-                        <p> CERTIFICATE </p>
-                    </li>
-
-                    <li>
-                        <img src={AppdynamicsIcon} />
-                        <h6> Aug. 2020 </h6>
-                        <AccentLine width='75px' />
-                        <h4> AppDynamics Associate Performance Analyst </h4>
-                        <AccentLine width='75px' />
-                        <p> CERTIFICATE </p>
-                    </li>
-
-                    <li>
-                        <img src={UniversityIcon} />
-                        <h6> Dec. 2018 </h6>
-                        <AccentLine width='75px' />
-                        <h4> B.S in Computer Engineering from FIU </h4>
-                        <AccentLine width='75px' />
-                        <p> DEGREE </p>
-                    </li>
+                    {
+                        GetEducationList().map((item) =>
+                            <li>
+                                <img src={item.icon} />
+                                <p> {item.type} </p>
+                                <AccentLine width='75px' />
+                                <h4> {item.name} </h4>
+                                <AccentLine width='75px' />
+                                <h6> {item.date.toUpperCase()} </h6>
+                            </li>
+                        )
+                    }
 
                 </ul>
 

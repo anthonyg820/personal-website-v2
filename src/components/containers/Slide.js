@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div.attrs({ className: "container-slide" })`
     position: relative;
     width: 100%;
-    height: 100dvh;
+    height: ${({height}) => height ? height : "calc(100dvh - 6rem)"};
     display: flex;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -15,9 +15,9 @@ const Container = styled.div.attrs({ className: "container-slide" })`
     }
 `
 
-export default function Slide({ children, color, freeHeightBreakpoint }) {
+export default function Slide({ children, height, color, freeHeightBreakpoint }) {
     return (
-        <Container color={color} freeHeightBreakpoint={freeHeightBreakpoint}>
+        <Container height={height} color={color} freeHeightBreakpoint={freeHeightBreakpoint}>
 
                 {children}
 

@@ -42,7 +42,8 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         height: 100%;
         display: flex;
         align-items: center;
-        background: url('${Texture}');
+        background-image: url('${Texture}');
+        background-position: center;
     }
 
     section {
@@ -175,7 +176,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         section {
             width: 100%;
             height: auto;
-            padding: 4rem 2rem;
+            padding: 4rem 0;
         }
 
         .slide-half-content {

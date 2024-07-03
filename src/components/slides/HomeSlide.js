@@ -54,6 +54,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
         }
 
         a {
+            position: relative;
             width: 100%;
             height: 4rem;
             border-top: 1px solid var(--black);
@@ -66,6 +67,10 @@ const Container = styled.div.attrs({ className: "home-slide" })`
 
             &:hover {
                 background: var(--dark-white);
+            }
+
+            &:hover ~ .accent-line {
+                background: var(--red);
             }
         }
     }
@@ -98,6 +103,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
             align-items: center;
             color:var(--black);
             transition: 0.3s;
+            cursor: pointer;
 
             &:hover {
                 background: var(--dark-white);
@@ -162,7 +168,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
     }
 `
 
-const NextSlideButton = styled.a.attrs({className: "next-slide-button"})`
+const NextSlideButton = styled.a.attrs({ className: "next-slide-button" })`
     width: 180px;
     height: 180px;
     border: 1px solid var(--black);
@@ -212,7 +218,7 @@ const NextSlideButton = styled.a.attrs({className: "next-slide-button"})`
     }
 `
 
-const AccentTriangle = styled.div.attrs({className: "home-accent-triangle"})`
+const AccentTriangle = styled.div.attrs({ className: "home-accent-triangle" })`
     width: 220px;
     height: 220px;
     border: 1px solid var(--red);
@@ -240,13 +246,13 @@ const AccentTriangle = styled.div.attrs({className: "home-accent-triangle"})`
     @media screen and (max-width: 800px) and (max-height: 550px) {
         display: none;
     }
-` 
+`
 
 export default function HomeSlide({ children }) {
     return (
-        <Slide color="var(--white)">
+        <Slide height="100dvh" color="var(--white)">
 
-            <NextSlideButton onClick={() => scroll.scrollTo(window.innerHeight, {containerId: "app-content", duration: 1000, delay: 200})}>
+            <NextSlideButton onClick={() => scroll.scrollTo(window.innerHeight, { containerId: "app-content", duration: 1000, delay: 200 })}>
                 <img src={ArrowDownIcon} />
             </NextSlideButton>
 
@@ -289,7 +295,17 @@ export default function HomeSlide({ children }) {
                         <ul>
 
                             <li>
-                                <a href="mailto:antg820@gmail.com" target="_blank" rel="noreferrer"> <img src={EmailIcon} /> Email </a>
+                                <Link
+                                    activeClass='active'
+                                    containerId='app-content'
+                                    to='section-header4'
+                                    spy={true}
+                                    smooth={true}
+                                    duration={1000}
+                                    delay={300}
+                                > 
+                                <img src={EmailIcon} /> Email
+                                </Link>
                             </li>
 
                             <li>
