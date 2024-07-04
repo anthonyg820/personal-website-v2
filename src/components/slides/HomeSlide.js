@@ -266,11 +266,8 @@ export default function HomeSlide({ children }) {
                     <div className='slide-half-content'>
 
                         <div id='profile-pic-container'></div>
-
                         <a href="assets/Anthony Resume V2.0.pdf" target='_blank' > DOWNLOAD RESUME </a>
-
                         <AccentLine width="150px" />
-
                         <AccentLine width="75px" />
 
                     </div>
@@ -299,13 +296,13 @@ export default function HomeSlide({ children }) {
                                 <Link
                                     activeClass='active'
                                     containerId='app-content'
-                                    to='section-header4'
+                                    to='section-header5'
                                     spy={true}
                                     smooth={true}
                                     duration={1000}
                                     delay={300}
-                                > 
-                                <img src={EmailIcon} /> Email
+                                >
+                                    <img src={EmailIcon} /> Email
                                 </Link>
                             </li>
 
