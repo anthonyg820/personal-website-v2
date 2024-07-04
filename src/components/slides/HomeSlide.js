@@ -64,6 +64,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
             align-items: center;
             color:var(--black);
             transition: 0.3s;
+            font-weight: bold;
 
             &:hover {
                 background: var(--dark-white);
@@ -266,7 +267,7 @@ export default function HomeSlide({ children }) {
 
                         <div id='profile-pic-container'></div>
 
-                        <a href="#" target='_blank' > DOWNLOAD RESUME </a>
+                        <a href="assets/Anthony Resume V2.0.pdf" target='_blank' > DOWNLOAD RESUME </a>
 
                         <AccentLine width="150px" />
 

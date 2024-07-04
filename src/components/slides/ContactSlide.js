@@ -139,7 +139,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 padding: 1rem 0;
             }
 
-            button {
+            input[type*='submit'] {
                 margin-top: 2rem;
                 width: 120px;
                 height: 4rem;
@@ -151,6 +151,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                color: black;
 
                 &:hover {
                     background: var(--dark-white);
@@ -381,7 +382,7 @@ export default function ContactSlide({ children }) {
                             <input type='email' placeholder='Email' />
                             <input type='text' placeholder='Subject' />
                             <textarea placeholder='Message' />
-                            <button> SEND </button>
+                            <input type='submit' value="SEND" />
 
                         </form>
 

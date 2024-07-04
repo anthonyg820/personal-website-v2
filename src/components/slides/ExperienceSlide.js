@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
 import AccentLine from '../widgets/AccentLine';
-import RCCLLogo from "../../res/images/RCCL.svg";
+import UKGLogo from "../../res/images/UKG2.svg";
 import Texture from "../../res/images/cube-texture.png";
 
-const Container = styled.div.attrs({ className: "rccl-slide" })`
+const Container = styled.div.attrs({ className: "experience-slide" })`
     width: 100%;
     height: 100%;
     display: flex;
@@ -20,10 +20,9 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid var(--rccl-navy);
         flex-shrink: 0;
-        background: var(--rccl-navy);
-        color: var(--white);
+        background: ${({backgroundColors}) => backgroundColors.header};
+        color: ${({textColors}) => textColors.header};
 
         .header-half {
             display: flex;
@@ -42,8 +41,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         height: 100%;
         display: flex;
         align-items: center;
-        background-image: url('${Texture}');
-        background-position: center;
+        gap: 1px;
     }
 
     section {
@@ -53,6 +51,9 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        background-color: ${({backgroundColors}) => backgroundColors.slide};
+        background-image: url('${Texture}');
+        background-position: center;
 
         .slide-half-content {
             width: 80%;
@@ -60,23 +61,20 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
             flex-direction: column;
             justify-content: center;
             gap: 2rem;
-            // background: red;
             box-sizing: border-box;
             padding: 2rem;
         }
     }
 
     #left-of-content {
-        border-right: 1px solid var(--rccl-navy);
-
         .slide-half-content {
-            background: var(--rccl-navy);
+            background: ${({backgroundColors}) => backgroundColors.focusArea};
             border-radius: 2rem;
-            color: var(--white);
+            color: ${({textColors}) => textColors.focusArea};
         }
 
         img {
-            width: 400px;
+            width: ${({companyLogo}) => companyLogo.width};
         }
 
         h4 {
@@ -96,13 +94,13 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
             justify-content: center;
             align-items: center;
             border-radius: 48px;
-            background: var(--rccl-gold);
-            color: var(--rccl-navy);
+            background: ${({backgroundColors}) => backgroundColors.learnMore};
+            color: ${({textColors}) => textColors.learnMore};
             font-weight: bold;
             transition: 0.3s;
 
             &:hover {
-                background: var(--rccl-light-gold);
+                background: var(--ukg-light-yellow);
             }
         }
     }
@@ -110,8 +108,8 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
     #right-of-content {
 
         .slide-half-content {
-            border: 1px solid var(--rccl-navy);
-            background:var(--rccl-blue);
+            border: 1px solid ${({backgroundColors}) => backgroundColors.header};
+            background: ${({backgroundColors}) => backgroundColors.impact};
         }
         
         ul {
@@ -125,7 +123,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
         li {
             font-size: 1.2rem;
             line-height: 1.8rem;
-            border-bottom: 1px solid var(--rccl-navy);
+            border-bottom: 1px solid ${({backgroundColors}) => backgroundColors.header};
             padding: 1rem 0;
         }
 
@@ -141,7 +139,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
             }
     
             h4 {
-                font-size: 2.6rem;
+                font-size: 3rem;
             }
 
             p {
@@ -164,7 +162,6 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
 
             #right-of-header {
                 text-align: right;
-                border-left: 1px solid var(--rccl-navy);
             }
         }
 
@@ -185,7 +182,7 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
 
         #left-of-content {
             border-right: 0;
-            border-bottom: 1px solid var(--rccl-navy);
+            border-bottom: 1px solid var(--ukg-teal);
         }
 
         #right-of-content {
@@ -196,23 +193,27 @@ const Container = styled.div.attrs({ className: "rccl-slide" })`
     }
 `
 
-export default function RCCLSlide({ children }) {
+export default function ExperienceSlide({
+    children, from, to, position, company, companyLogo, heading, subHeading, learnMoreLink, 
+    backgroundColors, textColors, responsibilities
+}) 
+{
     return (
-        <Slide color="var(--rccl-blue)" freeHeightBreakpoint="600px">
+        <Slide color={backgroundColors.header} freeHeightBreakpoint="600px">
 
-            <Container>
+            <Container backgroundColors={backgroundColors} textColors={textColors} companyLogo={companyLogo}>
 
                 <header>
 
                     <div className='header-half' id='left-of-header'>
 
-                        <h5> JAN. 2019 - SEP. 2021 </h5>
+                        <h5> {from} - {to} </h5>
 
                     </div>
 
                     <div className='header-half' id='right-of-header'>
 
-                        <h5> SITE RELIABILITY ENGINEER </h5>
+                        <h5> {position} </h5>
 
                     </div>
 
@@ -224,13 +225,10 @@ export default function RCCLSlide({ children }) {
 
                         <div className='slide-half-content'>
 
-                            <img src={RCCLLogo} />
-                            <h4>
-                                Turning the Vacation of a Lifetime
-                                into a Lifetime of Vacations
-                            </h4>
-                            <p> RCG is the parent company to Royal Caribbean International, Celebrity Cruises, and SilverSea. </p>
-                            <a target="_blank" rel="noreferrer" href='https://www.royalcaribbeangroup.com'> Learn more </a>
+                            <img src={companyLogo.src} />
+                            <h4> {heading} </h4>
+                            <p> {subHeading} </p>
+                            <a target="_blank" rel="noreferrer" href={learnMoreLink}> Learn more </a>
 
                         </div>
 
@@ -242,47 +240,11 @@ export default function RCCLSlide({ children }) {
 
                             <h4> IMPACT </h4>
 
-                            <AccentLine width="150px" color="var(--rccl-navy)" />
+                            <AccentLine width="150px" color={backgroundColors.header} />
 
                             <ul>
 
-                                <li>
-                                    Built a web application using ReactJS, NodeJS, and Ansible
-                                    that automated the deployment of AppDynamics agents to a
-                                    fleet of 60+ cruise ships.
-                                </li>
-
-                                <li>
-                                    Deployed and managed APM agents in Kubernetes/Openshift
-                                    environments.
-                                </li>
-
-                                <li>
-                                    Implemented metric-based dashboards that tied into incident
-                                    response systems like PagerDuty, lowering MTTA and MTTR by
-                                    60% and 30% respectively.
-                                </li>
-
-                                <li>
-                                    Created a web application to retrieve sailing history for a guest
-                                    and provided it to tier-1 customer support, reducing toil by 20%.
-                                </li>
-
-                                <li>
-                                    Leveraged AppDynamics to inspect application performance
-                                    trends and determine SLIs and SLOs for various software.
-                                </li>
-
-                                <li>
-                                    Utilized AppDynamics, PagerDuty, and bash/powershell to
-                                    create automated remediation scripts to resolve more than 200
-                                    recurring issues.
-                                </li>
-
-                                <li>
-                                    Took part in PagerDuty on-call shifts, resolving 200+ customer
-                                    issues for ships located in various parts of the world.
-                                </li>
+                                { responsibilities.map((item2) => <li> {item2} </li>) }
 
                             </ul>
 

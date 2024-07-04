@@ -38,6 +38,10 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
                 padding: 0.5rem
             }
 
+            .project-description {
+                font-size: 1.0rem;
+            }
+
             .project-options {
                 display: flex;
                 justify-content: center;
@@ -71,6 +75,16 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
                     box-sizing: border-box;
                     padding: 0.5rem;
                     border: 1px solid var(--black);
+                }
+
+                .project-coming-soon {
+                    height: 3rem;
+                    box-sizing: border-box;
+                    padding: 0.5rem;
+                    border: 1px solid var(--black);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
         }
@@ -114,21 +128,40 @@ export default function ProjectsSlideTwo() {
                     {
                         GetProjectList().map((item) =>
                             <li>
-                                <p> {item.techUsed} </p>
-                                <AccentLine width='75px' />
-                                {/* <AccentLine width='150px' /> */}
-                                <img src={item.image} />
                                 <h4> {item.name} </h4>
                                 <AccentLine width='75px' />
-                                <p> {item.description} </p>
+                                <img src={item.image} />
+                                <p className='project-description'> {item.description} </p>
                                 <AccentLine width='75px' />
 
                                 <div className='project-options'>
 
-                                    <a href={item.projectLink} target='_blank'> <img src={EyeIcon} /> </a>
-                                    <a href={item.githubLink} target='_blank'> <img src={GithubIcon} /> </a>
+                                    {
+                                        item.projectLink != "" ?
+                                            <a href={item.projectLink} target='_blank'> <img src={EyeIcon} /> </a>
+                                            :
+                                            null
+                                    }
+
+                                    {
+                                        item.githubLink != "" ?
+                                            <a href={item.githubLink} target='_blank'> <img src={GithubIcon} /> </a>
+                                            :
+                                            null
+                                    }
+
+                                    {
+                                        (item.projectLink == "" && item.githubLink == "") ?
+                                            <p className='project-coming-soon'> Coming soon </p>
+                                            :
+                                            null
+                                    }
 
                                 </div>
+
+                                <AccentLine width='75px' />
+
+                                <p> {item.techUsed} </p>
                             </li>
                         )
                     }
