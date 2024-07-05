@@ -6,7 +6,7 @@ import SectionHeader from './components/widgets/SectionHeader';
 import EducationSlide from './components/slides/EducationSlide';
 import { globalStore } from './AppManager';
 import ContactSlide from './components/slides/ContactSlide';
-import ProjectsSlideTwo from './components/slides/ProjectsSlideTwo';
+import ProjectsSlideTwo from './components/slides/ProjectsSlide';
 import ExperienceSlide from './components/slides/ExperienceSlide';
 import GetExperienceList from './data/experience-list';
 import MainNav from './components/navigation/MainNav';

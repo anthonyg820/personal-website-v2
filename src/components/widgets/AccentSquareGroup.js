@@ -11,10 +11,10 @@ const Container = styled.div.attrs({ className: "accent-square-group" })`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--black);
+    border: var(--global-border-width) solid var(--black);
 
     div {
-        border: 1px solid var(--black);
+        border: var(--global-border-width) solid var(--black);
         display: flex;
         align-items: center;
         justify-content: center;

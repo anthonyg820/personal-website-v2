@@ -12,7 +12,7 @@ export default function GetExperienceList() {
                     src: UKGLogo,
                     width: "200px"
                 },
-                heading: `"Our purpose is people"`,
+                heading: `Our purpose is people`,
                 subHeading: `UKG (Ultimate Kronos Group) is a SaaS company offering HR, payroll, 
                 and workforce management solutions.`,
                 learnMoreLink: "https://www.ukg.com/",

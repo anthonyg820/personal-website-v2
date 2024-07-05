@@ -14,7 +14,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
     height: 100%;
     display: flex;
     background: var(--black);
-    gap: 1px;
+    gap: var(--global-border-width);
     color: var(--black);
 
     section {
@@ -45,7 +45,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
         #profile-pic-container {
             width: 120px;
             height: 120px;
-            border: 1px solid var(--black);
+            border: var(--global-border-width) solid var(--black);
             // border-radius: 100%;
             background-image: url(${Avatar});
             background-size: 90%;
@@ -62,7 +62,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
             position: relative;
             width: 120px;
             height: 120px;
-            border: 1px solid var(--black);
+            border: var(--global-border-width) solid var(--black);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -85,27 +85,13 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 transition: 0.3s;
             }
 
-            // &::after {
-            //     content: "";
-            //     width: 50%;
-            //     height: 1px;
-            //     position: absolute;
-            //     bottom: 0;
-            //     transition: 0.3s;
-            // }
-
             &:hover {
                 background: var(--dark-white);
 
                 &::before {
                     background: var(--red);
-                    bottom: -2rem;
+                    bottom: -1rem;
                 }
-
-                // &::after {
-                //     background: var(--red);
-                //     bottom: -4rem;
-                // }
             }
         }
     }
@@ -137,6 +123,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 height: 6rem;
                 box-sizing: border-box;
                 padding: 1rem 0;
+                resize: none;
             }
 
             input[type*='submit'] {
@@ -146,7 +133,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 background: none;
                 outline: 0;
                 border: 0;
-                border: 1px solid var(--black);
+                border: var(--global-border-width) solid var(--black);
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
@@ -190,7 +177,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
             #profile-pic-container {
                 width: 80px;
                 height: 80px;
-                border: 1px solid var(--black);
+                border: var(--global-border-width) solid var(--black);
                 // border-radius: 100%;
                 background-image: url(${Avatar});
                 background-size: 90%;
@@ -207,7 +194,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 position: relative;
                 width: 80px;
                 height: 80px;
-                border: 1px solid var(--black);
+                border: var(--global-border-width) solid var(--black);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -242,7 +229,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
 const ScrollToTopButton = styled.a.attrs({ className: "scroll-to-top-button" })`
     width: 180px;
     height: 180px;
-    border: 1px solid var(--black);
+    border: var(--global-border-width) solid var(--black);
     // border-radius: 100%;
     position: absolute;
     top: 0;
@@ -304,7 +291,7 @@ const ScrollToTopButton = styled.a.attrs({ className: "scroll-to-top-button" })`
 const AccentTriangle = styled.div.attrs({ className: "home-accent-triangle" })`
     width: 220px;
     height: 220px;
-    border: 1px solid var(--red);
+    border: var(--global-border-width) solid var(--red);
     position: absolute;
     top: 0;
     left: 50%;

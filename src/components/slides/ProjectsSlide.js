@@ -1,194 +1,181 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
-import ArrowLeft from '../../res/icons/arrow-left-chevron.svg';
-import ArrowRight from '../../res/icons/arrow-right-chevron.svg';
-import { useEffect, useState } from 'react';
-import { Link, animateScroll as scroll } from "react-scroll";
+import AccentLine from '../widgets/AccentLine';
+import GetProjectList from '../../data/project-list';
+import GithubIcon from "../../res/icons/github.svg";
+import EyeIcon from "../../res/icons/eye.svg";
+import ModernButton from '../buttons/ModernButton';
 
 const Container = styled.div.attrs({ className: "projects-slide" })`
     width: 100%;
     height: 100%;
     display: flex;
-    background: var(--white);
-    gap: 1px;
-    color: var(--black);
-`
-
-const ProjectSliderContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
 
-    #slider-window {
-        width: 70%;
-        height: 70%;
-        border: 1px solid var(--black);
-        overflow: hidden;
-        display: flex;
-        flex-wrap: no-wrap;
-    }
-
-    #slider-content {
+    #project-list {
         width: 100%;
         height: 100%;
-        display: flex;
-        box-sizing: border-box;
-    }
-
-    .slider-arrow {
-        width: 4rem;
-        height: 4rem;
-        position: relative;
-        cursor: pointer;
-        box-sizing: border-box;
-        border: 1px solid transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s;
-
-        img {
-            width: 2.5rem;
-            height: 2.5rem;
-        }
-
-        &::after {
-            content: "";
-            width: 100%;
-            height: 1px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            transition: 0.3s;
-        }
-
-        &:hover {
-            background: var(--dark-white);
-            border: 1px solid var(--black);
-
-            &::after {
-                bottom: -2rem;
-                left: 0;
-                background: var(--red);
-            }
-        }
-    }
-
-    .slider-slide {
-        width: 100%;
-        height: 100%;
-        flex-shrink: 0;
-        display: flex;
-        gap: 1px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: var(--global-border-width);
         background: var(--black);
+        text-align: center;
 
-        .slider-slide-half {
-            width: 50%;
-            height: 100%;
-            background: var(--white);
+        li {
             display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: flex-start;
             align-items: center;
-            justify-content: center;
+            background: var(--white);
+            padding: 4rem 2rem;
 
-            .slider-slide-half-content {
-                width: 75%;
-                h3 {
-                    font-size: 2.8rem;
-                    margin-bottom: 1rem;
-                }
-            
-                h4 {
-                    font-weight: normal;
+            & > img {
+                width: 224px;
+                height: 126px;
+                box-sizing: border-box;
+                border: var(--global-border-width) solid var(--black);
+                padding: 0.5rem
+            }
+
+            .project-description {
+                font-size: 1.0rem;
+            }
+
+            .project-options {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+
+                // a {
+                //     position: relative;
+
+                //     &::before {
+                //         content: "";
+                //         width: 100%;
+                //         height: 1px;
+                //         position: absolute;
+                //         bottom: 0;
+                //         transition: 0.3s;
+                //     }
+
+                //     &:hover {
+                //         background: var(--dark-white);
+
+                //         &::before {
+                //             background: var(--red);
+                //             bottom: -1rem;
+                //         }
+                //     }
+                // }
+
+                // img {
+                //     width: 3rem;
+                //     height: 3rem;
+                //     box-sizing: border-box;
+                //     padding: 0.5rem;
+                //     border: var(--global-border-width) solid var(--black);
+                // }
+
+                .project-coming-soon {
+                    height: 3rem;
+                    box-sizing: border-box;
+                    padding: 0.5rem;
+                    border: var(--global-border-width) solid var(--black);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
+        }
+
+        li:last-of-type {
+            border: 0;
+        }
+    }
+
+    @media screen and (max-width: 980px) {
+        height: auto;
+
+        #project-list {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+
+            li {
+                padding: 3rem 1rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        height: auto;
+
+        #project-list {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
         }
     }
 `
-
-function ProjectSlider({children}) {
-
-    const [currentSlide, setSlide] = useState(0);
-
-    function scrollToSlide(slideIndex) {
-        let sliderSlides = document.getElementsByClassName("slider-slide");
-
-        let slideWidth = sliderSlides[slideIndex].clientWidth;
-        let iterator = slideWidth;
-
-        scroll.scrollTo(Math.ceil(slideIndex * iterator), {horizontal: true, containerId: "slider-window", duration: 500, delay: 100});
-    }
-
-    useEffect(() => {
-        scrollToSlide(currentSlide);
-    }, [currentSlide]);
-
-    return (
-        <ProjectSliderContainer>
-
-            <div id='slider-left-arrow' className='slider-arrow' onClick={() => setSlide(currentSlide - 1)}> <img src={ArrowLeft} /> </div>
-
-            <div id='slider-window'>
-
-                <div id='slider-content'>
-
-                    <div className='slider-slide'>
-
-                        <section className='slider-slide-half'>
-
-                            <div className='slider-slide-half-content'>
-
-                                <h3> DEVOPS HANGOUT </h3>
-
-                                <h4> A platform used to teach devops ideologies. </h4>
-
-                            </div>
-
-                        </section>
-
-                        <section className='slider-slide-half'>
-
-
-
-                        </section>
-
-                    </div>
-
-                    <div className='slider-slide'>
-
-                        <section className='slider-slide-half'>
-
-
-
-                        </section>
-
-                        <section className='slider-slide-half'>
-
-
-
-                        </section>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div id='slider-right-arrow' className='slider-arrow' onClick={() => setSlide(currentSlide + 1)}> <img src={ArrowRight} /> </div>
-
-        </ProjectSliderContainer>
-    )
-}
 
 export default function ProjectsSlide() {
     return (
-        <Slide>
+        <Slide color="var(--white)" height="auto">
 
             <Container>
 
-                <ProjectSlider />
+                <ul id='project-list'>
+
+                    {
+                        GetProjectList().map((item) =>
+                            <li>
+                                <h4> {item.name} </h4>
+                                <AccentLine width='75px' />
+                                <img src={item.image} />
+                                <p className='project-description'> {item.description} </p>
+                                <AccentLine width='75px' />
+
+                                <div className='project-options'>
+
+                                    {
+                                        item.projectLink != "" ?
+                                            <ModernButton
+                                                icon={EyeIcon}
+                                                link={item.projectLink}
+                                            />
+                                            :
+                                            null
+                                    }
+
+                                    {
+                                        item.githubLink != "" ?
+                                            <ModernButton
+                                                icon={GithubIcon}
+                                                link={item.githubLink}
+                                            />
+                                            :
+                                            null
+                                    }
+
+                                    {
+                                        (item.projectLink == "" && item.githubLink == "") ?
+                                            <ModernButton
+                                                text="Coming soon"
+                                            />
+                                            :
+                                            null
+                                    }
+
+                                </div>
+
+                                <AccentLine width='75px' />
+
+                                <p> {item.techUsed} </p>
+                            </li>
+                        )
+                    }
+
+                </ul>
 
             </Container>
 

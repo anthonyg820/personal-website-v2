@@ -4,17 +4,17 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import AccentLine from '../widgets/AccentLine';
 import EmailIcon from "../../res/icons/email.svg";
 import GithubIcon from "../../res/icons/github.svg";
+import DevopsSpinnerIcon from "../../res/icons/devops-spinner2.svg";
 import LinkedinIcon from "../../res/icons/linkedin.svg";
 import ArrowDownIcon from "../../res/icons/arrow-down.svg";
 import Avatar from "../../res/avatar.svg"
-import AccentSquareGroup from '../widgets/AccentSquareGroup';
 
 const Container = styled.div.attrs({ className: "home-slide" })`
     width: 100%;
     height: 100%;
     display: flex;
     background: var(--black);
-    gap: 1px;
+    gap: var(--global-border-width);
     color: var(--black);
 
     section {
@@ -42,29 +42,58 @@ const Container = styled.div.attrs({ className: "home-slide" })`
             align-items: center;
         }
 
-        #profile-pic-container {
-            width: 280px;
-            height: 280px;
-            border: 1px solid var(--black);
-            border-radius: 100%;
-            background-image: url(${Avatar});
-            background-size: 90%;
-            background-repeat: no-repeat;
-            background-position: bottom;
+        #profile-pic-outer-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+
+            #profile-pic-inner-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 220px;
+                height: 220px;
+                border: var(--global-border-width) solid var(--black);
+                border-radius: 100%;
+                background-image: url(${Avatar});
+                background-color: var(--white);
+                background-size: 90%;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                z-index: 2;
+            }
+            
+            #anim-spinner {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -150px 0 0 -150px;
+                width: 300px;
+                height: 300px;
+                z-index: 0;
+                animation: spin 5s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg) };
+                100% { transform: rotate(360deg) };
+            }
         }
 
         a {
             position: relative;
             width: 100%;
             height: 4rem;
-            border-top: 1px solid var(--black);
-            border-bottom:1px solid var(--black);
+            border-top: var(--global-border-width) solid var(--black);
+            border-bottom: var(--global-border-width) solid var(--black);
             display: flex;
             justify-content: center;
             align-items: center;
             color:var(--black);
             transition: 0.3s;
             font-weight: bold;
+            font-size: 1.2rem;
 
             &:hover {
                 background: var(--dark-white);
@@ -91,7 +120,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
         }
 
         li {
-            border-bottom: 1px solid var(--black);
+            border-bottom: var(--global-border-width) solid var(--black);
         }
 
         li:last-of-type {
@@ -120,9 +149,20 @@ const Container = styled.div.attrs({ className: "home-slide" })`
 
     @media screen and (max-width: 700px) {
         #left-of-slide {    
-            #profile-pic-container {
+            #profile-pic-outer-container {
                 width: 180px;
                 height: 180px;
+
+                #profile-pic-inner-container {
+                    width: 140px;
+                    height: 140px;
+                }
+
+                #anim-spinner {
+                    width: 180px;
+                    height: 180px;
+                    margin: -90px 0 0 -90px;
+                }
             }
         }
     }
@@ -137,13 +177,6 @@ const Container = styled.div.attrs({ className: "home-slide" })`
             .slide-half-content {
                 width: 80%;
                 height: 100%;
-            }
-        }
-
-        #left-of-slide {    
-            #profile-pic-container {
-                width: 140px;
-                height: 140px;
             }
         }
 
@@ -172,7 +205,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
 const NextSlideButton = styled.a.attrs({ className: "next-slide-button" })`
     width: 180px;
     height: 180px;
-    border: 1px solid var(--black);
+    border: var(--global-border-width) solid var(--black);
     // border-radius: 100%;
     position: absolute;
     bottom: 0;
@@ -222,7 +255,7 @@ const NextSlideButton = styled.a.attrs({ className: "next-slide-button" })`
 const AccentTriangle = styled.div.attrs({ className: "home-accent-triangle" })`
     width: 220px;
     height: 220px;
-    border: 1px solid var(--red);
+    border: var(--global-border-width) solid var(--red);
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -265,7 +298,14 @@ export default function HomeSlide({ children }) {
 
                     <div className='slide-half-content'>
 
-                        <div id='profile-pic-container'></div>
+
+                        <div id='profile-pic-outer-container'>
+
+                            <div id='profile-pic-inner-container'></div>
+                            <img id='anim-spinner' src={DevopsSpinnerIcon} />
+
+                        </div>
+
                         <a href="assets/Anthony Resume V2.0.pdf" target='_blank' > DOWNLOAD RESUME </a>
                         <AccentLine width="150px" />
                         <AccentLine width="75px" />

@@ -6,8 +6,8 @@ const Container = styled.div.attrs({ className: "section-header"})`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 2px solid var(--black);
-    border-bottom: 2px solid var(--black);
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
     background: var(--black);
     color: var(--white);
 `

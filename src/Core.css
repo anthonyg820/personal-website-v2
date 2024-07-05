@@ -23,6 +23,7 @@ body {
 
 :root {
   --widget-border-radius: 4px;
+  --global-border-width: 1px;
   --text-link: #006eff;
   --black: #272627;
   --white: #ffffff;

@@ -16,7 +16,7 @@ const Container = styled.div.attrs({ className: "education-slide" })`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        gap: 1px;
+        gap: var(--global-border-width);
         background: var(--black);
         text-align: center;
 
@@ -31,7 +31,7 @@ const Container = styled.div.attrs({ className: "education-slide" })`
             img {
                 height: 6rem;
                 box-sizing: border-box;
-                border: 1px solid var(--black);
+                border: var(--global-border-width) solid var(--black);
                 padding: 1rem;
                 border-radius: 1rem 0 1rem 0;
             }

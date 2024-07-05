@@ -41,7 +41,7 @@ const Container = styled.div.attrs({ className: "experience-slide" })`
         height: 100%;
         display: flex;
         align-items: center;
-        gap: 1px;
+        gap: var(--global-border-width);
     }
 
     section {
@@ -108,7 +108,7 @@ const Container = styled.div.attrs({ className: "experience-slide" })`
     #right-of-content {
 
         .slide-half-content {
-            border: 1px solid ${({backgroundColors}) => backgroundColors.header};
+            border: var(--global-border-width) solid ${({backgroundColors}) => backgroundColors.header};
             background: ${({backgroundColors}) => backgroundColors.impact};
         }
         
@@ -135,7 +135,7 @@ const Container = styled.div.attrs({ className: "experience-slide" })`
     @media screen and (max-width: 700px) {
         #left-of-content {    
             img {
-                width: 200px;
+                width: 100%;
             }
     
             h4 {

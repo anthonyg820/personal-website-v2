@@ -11,12 +11,13 @@ import DevopsIcon from '../res/icons/devops.svg';
 import PokedexIcon from '../res/icons/pokedex.svg';
 import ChatIcon from '../res/icons/chat.svg';
 import TictactoeIcon from '../res/icons/tictactoe.svg';
-import AvatarIcon from '../res/avatar-grayscale.svg';
+import AvatarIconV1 from '../res/avatar-grayscale.svg';
+import AvatarIconV2 from '../res/avatar-grayscale-v2.svg';
 
 export default function GetProjectList() {
     return [
         {
-            image: AvatarIcon,
+            image: AvatarIconV2,
             name: "Personal Website V2",
             description: `The current version of my personal website. At first glance, it may look similar to V1, 
             but was built from the ground up using ReactJS instead of vanilla JavaScript, and follows a much more
@@ -43,7 +44,7 @@ export default function GetProjectList() {
         //     projectLink: "#"
         // },
         {
-            image: AvatarIcon,
+            image: AvatarIconV1,
             name: "Personal Website V1",
             description: `The first version of my personal website. I implemented a slideshow-based UI.`,
             techUsed: "HTML | CSS | JAVASCRIPT",

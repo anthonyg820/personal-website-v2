@@ -9,7 +9,7 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 1px;
+    gap: var(--global-border-width);
     background: var(--black);
 
     .skillblock {
@@ -50,7 +50,7 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
             li {
                 width: 100%;
                 height: 3rem;
-                border: 1px solid var(--black);
+                border: var(--global-border-width) solid var(--black);
                 display: flex;
                 justify-content: center;
                 align-items: center;
