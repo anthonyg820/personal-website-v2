@@ -1,13 +1,7 @@
-import TerraformIcon from '../res/icons/terraform.svg';
-import AppdynamicsIcon from '../res/icons/appdynamics.svg';
-import DockerIcon from '../res/icons/docker-filled.svg';
-import GCPIcon from '../res/icons/gcp.svg';
-import GlobalIcon from '../res/icons/global.svg';
-import UniversityIcon from '../res/icons/education-black-filled.svg';
+
 import ShipIcon from '../res/icons/ship.svg';
 import CartIcon from '../res/icons/shopping-cart.svg';
 import BulletIcon from '../res/icons/bullet.svg';
-import DevopsIcon from '../res/icons/devops.svg';
 import PokedexIcon from '../res/icons/pokedex.svg';
 import ChatIcon from '../res/icons/chat.svg';
 import TictactoeIcon from '../res/icons/tictactoe.svg';

@@ -18,10 +18,6 @@ const Container = styled.div.attrs({ className: "menu-button" })`
     transition: 0.3s;
     z-index: 10;
 
-    &:hover {
-        background: var(--dark-white);
-    }
-
     .menu-button-line {
         position: relative;
         width: 70%;

@@ -48,36 +48,6 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
                 justify-content: center;
                 gap: 1rem;
 
-                // a {
-                //     position: relative;
-
-                //     &::before {
-                //         content: "";
-                //         width: 100%;
-                //         height: 1px;
-                //         position: absolute;
-                //         bottom: 0;
-                //         transition: 0.3s;
-                //     }
-
-                //     &:hover {
-                //         background: var(--dark-white);
-
-                //         &::before {
-                //             background: var(--red);
-                //             bottom: -1rem;
-                //         }
-                //     }
-                // }
-
-                // img {
-                //     width: 3rem;
-                //     height: 3rem;
-                //     box-sizing: border-box;
-                //     padding: 0.5rem;
-                //     border: var(--global-border-width) solid var(--black);
-                // }
-
                 .project-coming-soon {
                     height: 3rem;
                     box-sizing: border-box;
@@ -100,7 +70,6 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
 
         #project-list {
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
 
             li {
                 padding: 3rem 1rem;

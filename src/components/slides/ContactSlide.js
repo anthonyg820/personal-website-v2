@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
-import { Link, animateScroll as scroll } from "react-scroll";
 import AccentLine from '../widgets/AccentLine';
 import EmailIcon from "../../res/icons/email.svg";
 import GithubIcon from "../../res/icons/github.svg";
 import LinkedinIcon from "../../res/icons/linkedin.svg";
-import ArrowDownIcon from "../../res/icons/arrow-down.svg";
 import Avatar from "../../res/avatar.svg"
-import AccentSquareGroup from '../widgets/AccentSquareGroup';
+import TriangleScrollToButton from '../widgets/TriangleScrollToButton';
 
 const Container = styled.div.attrs({ className: "contact-slide" })`
     width: 100%;
@@ -226,107 +224,14 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
     }
 `
 
-const ScrollToTopButton = styled.a.attrs({ className: "scroll-to-top-button" })`
-    width: 180px;
-    height: 180px;
-    border: var(--global-border-width) solid var(--black);
-    // border-radius: 100%;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin: -90px 0 0 -90px;
-    z-index: 3;
-    background: var(--white);
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    transform: rotate(45deg);
-    transition: 0.3s;
-    cursor: pointer;
-    box-sizing: border-box;
-
-    &::after {
-        content: "BACK TO TOP";
-        position: absolute;
-        bottom: -2rem;
-        right: 30%;
-        color: var(--black);
-        font-weight: bold;
-    }
-
-    img {
-        width: 3rem;
-        height: 3rem;
-        transform: rotate(135deg);
-        position: relative;
-        bottom: 35px;
-        right: 35px;
-    }
-
-    &:hover {
-        border-width: 12px;
-        
-        &::after {
-            display: none;
-        }
-    }
-
-    &:hover + .home-accent-triangle {
-        margin: -110px 0 0 -110px;
-    }
-
-    @media screen and (max-width: 600px) {
-        display: none;
-    }
-
-    @media screen and (max-height: 500px) {
-        display: none;
-    }
-
-    @media screen and (max-width: 800px) and (max-height: 550px) {
-        display: none;
-    }
-`
-
-const AccentTriangle = styled.div.attrs({ className: "home-accent-triangle" })`
-    width: 220px;
-    height: 220px;
-    border: var(--global-border-width) solid var(--red);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin: -220px 0 0 -110px;
-    z-index: 2;
-    background: var(--white);
-    display: flex;
-    // opacity: 0.0;
-    transform: rotate(45deg);
-    transition: 0.3s;
-    cursor: pointer;
-    box-sizing: border-box;
-
-    @media screen and (max-width: 600px) {
-        display: none;
-    }
-
-    @media screen and (max-height: 500px) {
-        display: none;
-    }
-
-    @media screen and (max-width: 800px) and (max-height: 550px) {
-        display: none;
-    }
-`
-
 export default function ContactSlide({ children }) {
     return (
         <Slide color="var(--white)" freeHeightBreakpoint="600px">
 
-            <ScrollToTopButton onClick={() => scroll.scrollTo(0, { containerId: "app-content", duration: 1000, delay: 200 })}>
-                <img src={ArrowDownIcon} />
-            </ScrollToTopButton>
-
-            <AccentTriangle />
+            <TriangleScrollToButton
+                scrollTarget="0"
+                verticalPosition="top"
+            />
 
             <Container>
 

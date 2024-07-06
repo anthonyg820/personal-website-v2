@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import Slide from '../containers/Slide';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import AccentLine from '../widgets/AccentLine';
 import EmailIcon from "../../res/icons/email.svg";
 import GithubIcon from "../../res/icons/github.svg";
 import DevopsSpinnerIcon from "../../res/icons/devops-spinner2.svg";
 import LinkedinIcon from "../../res/icons/linkedin.svg";
-import ArrowDownIcon from "../../res/icons/arrow-down.svg";
 import Avatar from "../../res/avatar.svg"
+import TriangleScrollToButton from '../widgets/TriangleScrollToButton';
 
 const Container = styled.div.attrs({ className: "home-slide" })`
     width: 100%;
@@ -57,7 +57,6 @@ const Container = styled.div.attrs({ className: "home-slide" })`
                 border: var(--global-border-width) solid var(--black);
                 border-radius: 100%;
                 background-image: url(${Avatar});
-                background-color: var(--white);
                 background-size: 90%;
                 background-repeat: no-repeat;
                 background-position: bottom;
@@ -170,6 +169,24 @@ const Container = styled.div.attrs({ className: "home-slide" })`
     @media screen and (max-width: 600px) {
         flex-direction: column;
 
+        #left-of-slide {    
+            #profile-pic-outer-container {
+                width: 160px;
+                height: 160px;
+
+                #profile-pic-inner-container {
+                    width: 120px;
+                    height: 120px;
+                }
+
+                #anim-spinner {
+                    width: 160px;
+                    height: 160px;
+                    margin: -80px 0 0 -80px;
+                }
+            }
+        }
+
         section {
             width: 100%;
             height: 50%;
@@ -202,102 +219,20 @@ const Container = styled.div.attrs({ className: "home-slide" })`
     }
 `
 
-const NextSlideButton = styled.a.attrs({ className: "next-slide-button" })`
-    width: 180px;
-    height: 180px;
-    border: var(--global-border-width) solid var(--black);
-    // border-radius: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin: 0 0 -90px -90px;
-    z-index: 3;
-    background: var(--white);
-    display: flex;
-    justify-content: flex-start;
-    align-items: start;
-    transform: rotate(45deg);
-    transition: 0.3s;
-    cursor: pointer;
-    box-sizing: border-box;
-
-    img {
-        width: 3rem;
-        height: 3rem;
-        transform: rotate(-45deg);
-        position: relative;
-        top: 35px;
-        left: 35px;
-    }
-
-    &:hover {
-        border-width: 12px;
-        // border-color: var(--red);
-    }
-
-    &:hover + .home-accent-triangle {
-        margin: 0 0 -110px -110px;
-    }
-
-    @media screen and (max-width: 600px) {
-        display: none;
-    }
-
-    @media screen and (max-height: 500px) {
-        display: none;
-    }
-
-    @media screen and (max-width: 800px) and (max-height: 550px) {
-        display: none;
-    }
-`
-
-const AccentTriangle = styled.div.attrs({ className: "home-accent-triangle" })`
-    width: 220px;
-    height: 220px;
-    border: var(--global-border-width) solid var(--red);
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin: 0 0 -220px -110px;
-    z-index: 2;
-    background: var(--white);
-    display: flex;
-    // opacity: 0.0;
-    transform: rotate(45deg);
-    transition: 0.3s;
-    cursor: pointer;
-    box-sizing: border-box;
-
-    @media screen and (max-width: 600px) {
-        display: none;
-    }
-
-    @media screen and (max-height: 500px) {
-        display: none;
-    }
-
-    @media screen and (max-width: 800px) and (max-height: 550px) {
-        display: none;
-    }
-`
-
 export default function HomeSlide({ children }) {
     return (
         <Slide height="100dvh" color="var(--white)">
 
-            <NextSlideButton onClick={() => scroll.scrollTo(window.innerHeight, { containerId: "app-content", duration: 1000, delay: 200 })}>
-                <img src={ArrowDownIcon} />
-            </NextSlideButton>
-
-            <AccentTriangle />
+            <TriangleScrollToButton
+                scrollTarget={window.innerHeight}
+                verticalPosition="bottom"
+            />
 
             <Container>
 
                 <section id="left-of-slide">
 
                     <div className='slide-half-content'>
-
 
                         <div id='profile-pic-outer-container'>
 

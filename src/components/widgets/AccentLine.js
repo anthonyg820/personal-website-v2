@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 const Container = styled.div.attrs({ className: "accent-line" })`
-    width: ${({width}) => width};
-    height: var(--global-border-width);
+    width: ${({vertical, width}) => vertical ? "var(--global-border-width)" : width};
+    height: ${({vertical, height}) => vertical ? height : "var(--global-border-width)"};
     background: ${({color}) => color ? color : "var(--black)"};
 `
 
-export default function AccentLine({width, color}) {
+export default function AccentLine({vertical, width, height, color}) {
     return (
-        <Container width={width} color={color}>  </Container>
+        <Container vertical={vertical} width={width} height={height} color={color}>  </Container>
     )
 }

@@ -11,6 +11,7 @@ import ExperienceSlide from './components/slides/ExperienceSlide';
 import GetExperienceList from './data/experience-list';
 import MainNav from './components/navigation/MainNav';
 import MenuButton from './components/navigation/MenuButton';
+import SplashSlide from './components/slides/SplashSlide';
 
 const Container = styled.div.attrs({ className: "app" })`
   width: 100%;
@@ -44,6 +45,7 @@ function App() {
 
       <div id='app-content' onClick={() => setVisible(false)}>
 
+        {/* <SplashSlide /> */}
         <HomeSlide />
         <SectionHeader title="SKILLS" id="skills-section" />
         <SkillsSlide />
