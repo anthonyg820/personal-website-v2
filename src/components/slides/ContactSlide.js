@@ -112,6 +112,7 @@ const Container = styled.div.attrs({ className: "contact-slide" })`
                 box-sizing: border-box;
                 outline: 0;
                 border: 0;
+                border-radius: 0;
                 border-bottom: 1px solid var(--black);
                 display: flex;
                 align-items: center;
@@ -231,6 +232,7 @@ export default function ContactSlide({ children }) {
             <TriangleScrollToButton
                 scrollTarget="0"
                 verticalPosition="top"
+                label="BACK TO TOP"
             />
 
             <Container>

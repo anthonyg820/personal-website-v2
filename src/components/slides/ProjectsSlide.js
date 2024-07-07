@@ -5,6 +5,8 @@ import GetProjectList from '../../data/project-list';
 import GithubIcon from "../../res/icons/github.svg";
 import EyeIcon from "../../res/icons/eye.svg";
 import ModernButton from '../buttons/ModernButton';
+import { motion, useInView } from "framer-motion"
+import React, { useRef } from 'react';
 
 const Container = styled.div.attrs({ className: "projects-slide" })`
     width: 100%;
@@ -23,6 +25,7 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
         text-align: center;
 
         li {
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: 1rem;
@@ -88,16 +91,83 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
 `
 
 export default function ProjectsSlide() {
+
+    /*
+        The animation is conditional on the window's innerWidth (in coordination with the CSS media queries).
+        If desktop, stagger the li's via the parent.
+        If mobile, the parent stagger is discarded, and each li is responsible for its own animation.
+
+        This was done to give that 'each item appears individually' feel.
+    */
+
+    const liAnim = {
+        hidden: { opacity: 0, left: '100%' },
+        visible: { opacity: 1, left: '0%' }
+    }
+
+    // One ref and useInView for each education item
+    const liRef1 = useRef(null);
+    const liInView1 = useInView(liRef1, { once: true });
+
+    const liRef2 = useRef(null);
+    const liInView2 = useInView(liRef2, { once: true });
+
+    const liRef3 = useRef(null);
+    const liInView3 = useInView(liRef3, { once: true });
+
+    const liRef4 = useRef(null);
+    const liInView4 = useInView(liRef4, { once: true });
+
+    const liRef5 = useRef(null);
+    const liInView5 = useInView(liRef5, { once: true });
+
+    const liRef6 = useRef(null);
+    const liInView6 = useInView(liRef6, { once: true });
+
+    const liRef7 = useRef(null);
+    const liInView7 = useInView(liRef7, { once: true });
+
+    const liRef8 = useRef(null);
+    const liInView8 = useInView(liRef8, { once: true });
+
+    const liRefArr = [
+        { ref: liRef1, inView: liInView1 },
+        { ref: liRef2, inView: liInView2 },
+        { ref: liRef3, inView: liInView3 },
+        { ref: liRef4, inView: liInView4 },
+        { ref: liRef5, inView: liInView5 },
+        { ref: liRef6, inView: liInView6 },
+        { ref: liRef7, inView: liInView7 },
+        { ref: liRef8, inView: liInView8 }
+    ];
+
+    // One ref and useInView for each education item
+    const ulRef = useRef(null);
+    const ulInView = useInView(ulRef, { once: true })
+
     return (
         <Slide color="var(--white)" height="auto">
 
             <Container>
 
-                <ul id='project-list'>
+                <motion.ul id='project-list'
+                    ref={ulRef}
+                    animate={ulInView ? "visible" : "hidden"}
+                    transition={{ delayChildren: 0.2, staggerChildren: 0.12 }}
+                >
 
                     {
-                        GetProjectList().map((item) =>
-                            <li>
+                        GetProjectList().map((item, index) =>
+                            <motion.li
+                                ref={liRefArr[index].ref}
+                                variants={window.innerWidth > 650 ? liAnim : null}
+                                initial={window.innerWidth < 650 ? liAnim.hidden : null}
+                                animate={window.innerWidth < 650 ?
+                                    (liRefArr[index].inView ? liAnim.visible : null) : null}
+                                transition={window.innerWidth < 650 ?
+                                    (liRefArr[index].inView ? { delay: 0.15, duration: 0.3 } : null) : null
+                                }
+                            >
                                 <h4> {item.name} </h4>
                                 <AccentLine width='75px' />
                                 <img src={item.image} />
@@ -140,11 +210,11 @@ export default function ProjectsSlide() {
                                 <AccentLine width='75px' />
 
                                 <p> {item.techUsed} </p>
-                            </li>
+                            </motion.li>
                         )
                     }
 
-                </ul>
+                </motion.ul>
 
             </Container>
 

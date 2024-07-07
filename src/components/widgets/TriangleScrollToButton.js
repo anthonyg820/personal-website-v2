@@ -43,12 +43,15 @@ const Container = styled.div.attrs({ className: "triangle-scroll-to-button" })`
         }
 
         &::after {
-            content: "BACK TO TOP";
+            content: "${({label}) => label}";
             position: absolute;
-            bottom: -2rem;
-            right: 30%;
+            top: -2rem;
+            // right: 30%;
+            width: 100%;
+            text-align: center;
             color: var(--black);
             font-weight: bold;
+            transform: rotate(180deg);
         }
     }
 
@@ -70,6 +73,9 @@ const Container = styled.div.attrs({ className: "triangle-scroll-to-button" })`
 
     &:hover > .inner-triangle {
         border-width: 12px;
+        &::after {
+            display: none;
+        }
     }
 
     &:hover > .outer-triangle {

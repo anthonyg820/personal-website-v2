@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { motion, useInView } from "framer-motion"
+import React, { useRef } from 'react';
 import Slide from '../containers/Slide';
 import { Link } from "react-scroll";
 import AccentLine from '../widgets/AccentLine';
@@ -107,7 +109,7 @@ const Container = styled.div.attrs({ className: "home-slide" })`
     #right-of-slide {
         h1 {
             font-size: 3.2rem;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
         }
     
         h3 {
@@ -220,6 +222,11 @@ const Container = styled.div.attrs({ className: "home-slide" })`
 `
 
 export default function HomeSlide({ children }) {
+
+    // const [ppOuterRef, ppOuterView] = useInView();
+    // const [ppInnerRef, ppInnerView] = useInView();
+    // const [ppSpinnerRef, ppSpinnerView] = useInView();
+
     return (
         <Slide height="100dvh" color="var(--white)">
 
@@ -236,8 +243,13 @@ export default function HomeSlide({ children }) {
 
                         <div id='profile-pic-outer-container'>
 
-                            <div id='profile-pic-inner-container'></div>
-                            <img id='anim-spinner' src={DevopsSpinnerIcon} />
+                            <motion.div id='profile-pic-inner-container' 
+                                // ref={ppInnerRef}
+                                // initial={{ opacity: 0.0, marginBottom: -20 }}
+                                // animate={{ opacity: 1.0, marginBottom: 0 }}
+                            >
+                            </motion.div>
+                            <motion.img id='anim-spinner' src={DevopsSpinnerIcon}  />
 
                         </div>
 

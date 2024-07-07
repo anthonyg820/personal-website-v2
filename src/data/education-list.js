@@ -6,6 +6,7 @@ import GlobalIcon from '../res/icons/global.svg';
 import UniversityIcon from '../res/icons/education-black-filled.svg';
 
 export default function GetEducationList() {
+
     return [
             {
                 icon: DockerIcon,
