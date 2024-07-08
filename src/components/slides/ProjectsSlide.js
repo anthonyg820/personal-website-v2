@@ -49,7 +49,7 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
             .project-options {
                 display: flex;
                 justify-content: center;
-                gap: 1rem;
+                gap: 0.5rem;
 
                 .project-coming-soon {
                     height: 3rem;
@@ -63,8 +63,25 @@ const Container = styled.div.attrs({ className: "projects-slide" })`
             }
         }
 
-        li:last-of-type {
-            border: 0;
+        .tech-used {
+            // width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            // border: 1px solid var(--black);
+            flex-wrap: wrap;
+
+            li {
+                display: flex;
+                box-sizing: border-box;
+                padding: 0.5rem;
+                border: 1px solid var(--black);
+                color: var(--black);
+                background: var(--light-gray);
+                font-family: monospace;
+                font-weight: bold;
+            }
         }
     }
 
@@ -173,7 +190,9 @@ export default function ProjectsSlide() {
                                 <img src={item.image} />
                                 <p className='project-description'> {item.description} </p>
                                 <AccentLine width='75px' />
-
+                                <ul className='tech-used'> {item.techUsed.map((techItem) => <li> {techItem.toUpperCase()} </li>)} </ul>
+                                <AccentLine width='75px' />
+                                
                                 <div className='project-options'>
 
                                     {
@@ -207,9 +226,6 @@ export default function ProjectsSlide() {
 
                                 </div>
 
-                                <AccentLine width='75px' />
-
-                                <p> {item.techUsed} </p>
                             </motion.li>
                         )
                     }

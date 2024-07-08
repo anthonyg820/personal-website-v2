@@ -173,18 +173,18 @@ const Container = styled.div.attrs({ className: "home-slide" })`
 
         #left-of-slide {    
             #profile-pic-outer-container {
-                width: 160px;
-                height: 160px;
+                width: 200px;
+                height: 200px;
 
                 #profile-pic-inner-container {
-                    width: 120px;
-                    height: 120px;
+                    width: 140px;
+                    height: 140px;
                 }
 
                 #anim-spinner {
-                    width: 160px;
-                    height: 160px;
-                    margin: -80px 0 0 -80px;
+                    width: 200px;
+                    height: 200px;
+                    margin: -100px 0 0 -100px;
                 }
             }
         }
@@ -192,6 +192,9 @@ const Container = styled.div.attrs({ className: "home-slide" })`
         section {
             width: 100%;
             height: 50%;
+            .accent-line {
+                display: none;
+            }
 
             .slide-half-content {
                 width: 80%;
@@ -201,10 +204,6 @@ const Container = styled.div.attrs({ className: "home-slide" })`
 
         #right-of-slide {
             text-align: center;
-
-            .accent-line {
-                display: none;
-            }
         }
     }
 

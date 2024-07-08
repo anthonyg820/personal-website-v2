@@ -54,6 +54,7 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
                 position: relative;
                 width: 100%;
                 height: 3rem;
+                box-sizing: border-box;
                 border: var(--global-border-width) solid var(--black);
                 display: flex;
                 justify-content: center;
@@ -75,6 +76,23 @@ const Container = styled.div.attrs({ className: "skills-slide" })`
     @media screen and (max-width: 550px) {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+
+        .skillblock{
+            .skillblock-content {
+                width: 80%;
+
+                ul {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+
+                li {
+                    width: auto;
+                    padding: 0 1rem;
+                }
+            }
+        }
+        
     }
 `
 
@@ -86,8 +104,8 @@ export default function SkillsSlide({ children }) {
     }
 
     const liAnim = {
-        hidden: { opacity: 0, bottom: -20 },
-        visible: { opacity: 1, bottom: 0 }
+        hidden: window.innerWidth > 550 ? { opacity: 0, bottom: -20, borderWidth: '10px' } : { opacity: 0, right: -20, },
+        visible: window.innerWidth > 550 ? { opacity: 1, bottom: 0, borderWidth: '1px' } : { opacity: 1, right: 0, }
     }
 
     // One ref and useInView for each pillar

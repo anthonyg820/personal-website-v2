@@ -20,23 +20,52 @@ const Container = styled.div.attrs({ className: "education-slide" })`
         grid-template-rows: 1fr 1fr;
         gap: var(--global-border-width);
         background: var(--black);
-        text-align: center;
 
         li {
             position: relative;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            gap: 2rem;
             justify-content: center;
             align-items: center;
             background: var(--white);
+            padding: 3rem 0;
 
-            img {
-                height: 6rem;
-                box-sizing: border-box;
-                border: var(--global-border-width) solid var(--black);
-                padding: 1rem;
-                border-radius: 1rem 0 1rem 0;
+            .left-of-education-item, .right-of-education-item {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .left-of-education-item {
+                width: 30%;
+                flex-shrink: 0;
+                align-items: end;
+                // background: red;
+
+                img {
+                    width: 6rem;
+                    height: 6rem;
+                    box-sizing: border-box;
+                    border: var(--global-border-width) solid var(--black);
+                    padding: 1rem;
+                    border-radius: 1rem 0 1rem 0;
+                }
+
+                p {
+                    width: 6rem;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            }
+
+            .right-of-education-item {
+                width: 70%;
+                align-itemst: start;
+                padding-right: 1rem;
+
+                h6 {
+                    font-weight: normal;
+                }
             }
         }
 
@@ -116,7 +145,7 @@ export default function EducationSlide() {
     const ulInView = useInView(ulRef, { once: true })
 
     return (
-        <Slide color="var(--black)" freeHeightBreakpoint="980px">
+        <Slide color="var(--black)" height="auto" freeHeightBreakpoint="980px">
 
             <Container>
 
@@ -132,18 +161,23 @@ export default function EducationSlide() {
                                 ref={liRefArr[index].ref}
                                 variants={window.innerWidth > 650 ? liAnim : null}
                                 initial={window.innerWidth < 650 ? liAnim.hidden : null}
-                                animate={window.innerWidth < 650 ? 
+                                animate={window.innerWidth < 650 ?
                                     (liRefArr[index].inView ? liAnim.visible : null) : null}
-                                transition={window.innerWidth < 650 ? 
+                                transition={window.innerWidth < 650 ?
                                     (liRefArr[index].inView ? { delay: 0.15, duration: 0.3 } : null) : null
                                 }
                             >
-                                <img src={item.icon} />
-                                <p> {item.type} </p>
-                                <AccentLine width='75px' />
-                                <h4> {item.name} </h4>
-                                <AccentLine width='75px' />
-                                <h6> {item.date.toUpperCase()} </h6>
+                                <div className='left-of-education-item'>
+                                    <img src={item.icon} />
+                                    <p> {item.type} </p>
+                                </div>
+
+                                <div className='right-of-education-item'>
+                                    <h4> {item.name} </h4>
+                                    <AccentLine width='75px' />
+                                    <h6> {item.date.toUpperCase()} </h6>
+                                </div>
+
                             </motion.li>
                         )
                     }
